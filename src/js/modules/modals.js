@@ -46,7 +46,6 @@ const modals = () => {
 
   function showModalByTime(selector, time) {
     setTimeout(() => {
-      console.log("1");
       document.body.classList.add("modal-open");
       document.querySelector(selector).classList.add("popup_opened");
     }, time);
