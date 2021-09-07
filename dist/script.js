@@ -14037,7 +14037,7 @@ const modals = () => {
             e.preventDefault();
           }
 
-          popup.style.display = "block";
+          popup.classList.add("popup_opened");
           document.body.classList.add("modal-open");
         });
       });
@@ -14047,19 +14047,19 @@ const modals = () => {
           e.preventDefault();
         }
 
-        popup.style.display = "block";
+        popup.classList.add("popup_opened");
         document.body.classList.add("modal-open");
       });
     }
 
     popup.addEventListener("click", e => {
       if (e.target == e.currentTarget) {
-        popup.style.display = "none";
+        popup.classList.remove("popup_opened");
         document.body.classList.remove("modal-open");
       }
     });
     close.addEventListener("click", e => {
-      popup.style.display = "none";
+      popup.classList.remove("popup_opened");
       document.body.classList.remove("modal-open");
     });
   }
@@ -14076,12 +14076,12 @@ const modals = () => {
   function showModalByTime(selector, time) {
     setTimeout(() => {
       console.log("1");
-      document.querySelector(selector).style.display = "block";
-      document.querySelector(selector).classList.add("modal-open");
+      document.body.classList.add("modal-open");
+      document.querySelector(selector).classList.add("popup_opened");
     }, time);
   }
 
-  showModalByTime(".popup", 60000);
+  showModalByTime(".popup", 1000);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);
