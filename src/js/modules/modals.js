@@ -52,7 +52,7 @@ const modals = () => {
     }, time);
   }
 
-  showModalByTime(".popup", 1000);
+  showModalByTime(".popup", 60000);
 };
 
 export default modals;
