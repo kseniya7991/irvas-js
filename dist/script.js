@@ -14010,8 +14010,81 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
 
-console.log('df');
+
+window.addEventListener('DOMContentLoaded', () => {
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/modals.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/modals.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const modals = () => {
+  function bindModal(trigger, popup, close) {
+    if (trigger.length > 1) {
+      trigger.forEach(el => {
+        el.addEventListener("click", e => {
+          if (e.target) {
+            e.preventDefault();
+          }
+
+          popup.style.display = "block";
+          document.body.classList.add("modal-open");
+        });
+      });
+    } else {
+      trigger.addEventListener("click", e => {
+        if (e.target) {
+          e.preventDefault();
+        }
+
+        popup.style.display = "block";
+        document.body.classList.add("modal-open");
+      });
+    }
+
+    popup.addEventListener("click", e => {
+      if (e.target == e.currentTarget) {
+        popup.style.display = "none";
+        document.body.classList.remove("modal-open");
+      }
+    });
+    close.addEventListener("click", e => {
+      popup.style.display = "none";
+      document.body.classList.remove("modal-open");
+    });
+  }
+
+  const callEngineerBtn = document.querySelector(".popup_engineer_btn"),
+        modalEngineer = document.querySelector(".popup_engineer"),
+        modalEngineerClose = document.querySelector(".popup_engineer .popup_close");
+  const reqBackCalls = document.querySelectorAll(".phone_link"),
+        modalBackCall = document.querySelector(".popup"),
+        modalBackCallClose = document.querySelector(".popup .popup_close");
+  bindModal(callEngineerBtn, modalEngineer, modalEngineerClose);
+  bindModal(reqBackCalls, modalBackCall, modalBackCallClose);
+
+  function showModalByTime(selector, time) {
+    setTimeout(() => {
+      console.log("1");
+      document.querySelector(selector).style.display = "block";
+      document.querySelector(selector).classList.add("modal-open");
+    }, time);
+  }
+
+  showModalByTime(".popup", 60000);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (modals);
 
 /***/ }),
 
