@@ -15157,6 +15157,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener("DOMContentLoaded", () => {
   Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
   Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])(".glazing_slider", ".glazing_block", ".glazing_content", "active");
+  Object(_modules_tabs__WEBPACK_IMPORTED_MODULE_2__["default"])(".decoration_slider", ".no_click", ".decoration_content > div > div", "after_click");
 });
 
 /***/ }),
@@ -15246,6 +15247,7 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
   const header = document.querySelector(headerSelector),
         tab = document.querySelectorAll(tabSelector),
         content = document.querySelectorAll(contentSelector);
+  console.log(content);
 
   function hideTabContent() {
     content.forEach(el => {
@@ -15266,7 +15268,7 @@ const tabs = (headerSelector, tabSelector, contentSelector, activeClass) => {
   header.addEventListener("click", e => {
     const target = e.target;
 
-    if (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, ""))) {
+    if (target && (target.classList.contains(tabSelector.replace(/\./, "")) || target.parentNode.classList.contains(tabSelector.replace(/\./, "")))) {
       tab.forEach((item, i) => {
         if (target == item || target.parentNode == item) {
           hideTabContent();
