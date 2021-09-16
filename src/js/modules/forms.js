@@ -1,6 +1,8 @@
+import changeModalState from "./changeModalState";
 import checkNumInputs from "./checkNumInputs";
+import clearCalcForm from "./clearCalcForm";
 
-const forms = (modalState) => {
+const forms = (state) => {
   const form = document.querySelectorAll(".form"),
     inputs = document.querySelectorAll(".form_input");
 
@@ -24,6 +26,9 @@ const forms = (modalState) => {
 
   //Очистка инпутов
   const clearInputs = () => {
+    clearCalcForm();
+    let newState = { form: 0, width: "", height: "", type: "tree" };
+    changeModalState(newState);
     inputs.forEach((el) => {
       el.value = "";
     });
@@ -41,8 +46,14 @@ const forms = (modalState) => {
       const formData = new FormData(el);
 
       if (el.getAttribute("data-calc") === "end") {
-        for (let key in modalState) {
-          formData.append(key, modalState[key]);
+        setTimeout(() => {
+          const endCalcForm = document.querySelector(".popup_calc_end");
+          endCalcForm.classList.remove("popup_opened");
+          document.body.classList.remove("modal-open");
+        }, 1000);
+
+        for (let key in state) {
+          formData.append(key, state[key]);
         }
       }
 

@@ -1,12 +1,14 @@
 import checkNumInputs from "./checkNumInputs";
 
 function changeModalState(state) {
+  console.log(state);
   const windowForm = document.querySelectorAll(".balcon_icons_img"),
     windowWidth = document.querySelectorAll("#width"),
     windowHeight = document.querySelectorAll("#height"),
     windowType = document.querySelectorAll("#view_type"),
     windowProfile = document.querySelectorAll(".checkbox"),
-    nextBtn = document.querySelector(".popup_calc_button");
+    nextBtnParams = document.querySelector(".popup_calc_button"),
+    nextBtnProfile = document.querySelector(".popup_calc_profile_button");
 
   checkNumInputs("#width");
   checkNumInputs("#height");
@@ -26,6 +28,7 @@ function changeModalState(state) {
                 if (i === j) {
                   box.checked = true;
                 }
+                validateCalcForm(state);
               });
             } else {
               state[prop] = item.value;
@@ -50,17 +53,17 @@ function changeModalState(state) {
   bindActionToEl("change", windowProfile, "profile");
 
   function validateCalcForm(state) {
-    console.log(state.width);
-    if (state.width === "" || state.height === "") {
-      nextBtn.setAttribute("disabled", true);
+    if ("profile" in state) {
+      nextBtnProfile.removeAttribute("disabled");
     } else {
-      nextBtn.removeAttribute("disabled");
+      nextBtnProfile.setAttribute("disabled", true);
     }
-    /*     if ("width" in state && "height" in state && ) {
-      console.log("ширину ввели");
+
+    if (state.width === "" || state.height === "") {
+      nextBtnParams.setAttribute("disabled", true);
     } else {
-      console.log("ширину не ввели");
-    } */
+      nextBtnParams.removeAttribute("disabled");
+    }
   }
 
   validateCalcForm(state);
