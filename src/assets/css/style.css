@@ -11,6 +11,7 @@ body {
   font-weight: 400;
   font-style: normal;
   color: #000000;
+  margin-right: calc(-1 * (100vw - 100%));
 }
 
 .status {
@@ -62,6 +63,7 @@ textarea:focus {
   margin-bottom: 2rem;
   text-align: center;
   border-radius: 1rem;
+  box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
 
@@ -172,6 +174,10 @@ textarea:focus {
   border: none;
 }
 
+.row {
+  animation: blinded .3s ease-in-out;
+}
+
 .prev {
   left: 0;
   background: url(../img/glazing/left_arrow.png) center no-repeat;
@@ -225,14 +231,12 @@ textarea:focus {
   font-weight: 700;
   font-style: normal;
   color: #55a831;
-  /*p {
-				display: inline-block;
-			vertical-align: top;
-				font-size: 1.4rem;
-				line-height: 1.2;
-				.bold();
-				color: @green;
-			}*/
+  transition: .2s;
+}
+
+.header_btn:hover {
+  transition: .2s;
+  opacity: .5;
 }
 
 .header_btn_wrap {
@@ -873,9 +877,10 @@ textarea:focus {
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
 
-  transition: 0.2s;
   opacity: 0;
   visibility: hidden;
+
+
 }
 
 .myimage {
@@ -1172,6 +1177,18 @@ textarea:focus {
 
   .header .contact_us_wrap a {
     font-size: 2rem;
+  }
+
+  .glazing_content {
+    animation: blinded .3s ease-in-out;
+  }
+
+  @keyframes blinded {
+    from {
+      opacity: 0;
+    } to {
+      opacity: 1;
+    }
   }
 
   .glazing_cold img {
