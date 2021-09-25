@@ -1,7 +1,6 @@
 import checkNumInputs from "./checkNumInputs";
 
 function changeModalState(state) {
-  console.log(state);
   const windowForm = document.querySelectorAll(".balcon_icons_img"),
     windowWidth = document.querySelectorAll("#width"),
     windowHeight = document.querySelectorAll("#height"),
@@ -41,7 +40,6 @@ function changeModalState(state) {
             state[prop] = item.value;
             break;
         }
-        console.log(state);
       });
     });
   }

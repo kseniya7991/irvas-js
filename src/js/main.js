@@ -3,11 +3,14 @@ import modals from "./modules/modals";
 import tabs from "./modules/tabs";
 import forms from "./modules/forms";
 import changeModalState from "./modules/changeModalState";
+import timer from "./modules/timer";
+import images from "./modules/images";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   let modalState = { form: 0, width: "", height: "", type: "tree" };
+  let deadline = '2021-12-31';
 
   changeModalState(modalState);
 
@@ -27,4 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
     "inline"
   );
   forms(modalState);
+  timer(".container1", deadline);
+  images();
 });

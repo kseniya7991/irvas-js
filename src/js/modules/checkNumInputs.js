@@ -1,6 +1,5 @@
 function checkNumInputs(inputSelector) {
   const input = document.querySelectorAll(inputSelector);
-  console.log(inputSelector, input);
 
   input.forEach((el) => {
     el.addEventListener("input", () => {

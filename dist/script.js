@@ -15210,7 +15210,6 @@ const forms = () => {
       el.appendChild(statusMessage);
       const formData = new FormData(el);
       postData("assets/server.php", formData).then(res => {
-        console.log(res);
         statusMessage.textContent = message.success;
       }).catch(() => {
         statusMessage.textContent = message.failure;
